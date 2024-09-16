@@ -10,7 +10,7 @@ radius = 11.1773
 
 [node name="Game" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
+[node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("1_utqqj")
 Bullet = ExtResource("2_k470q")
 
@@ -24,11 +24,4 @@ shape = SubResource("CircleShape2D_sy2xw")
 [node name="Shooter" type="Marker2D" parent="Player"]
 position = Vector2(135, 0)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(0.8, 0.8)
-
 [node name="Mob" parent="." groups=["mobs"] instance=ExtResource("4_r55kn")]
-
-[node name="Mob2" parent="." groups=["mobs"] instance=ExtResource("4_r55kn")]
-position = Vector2(314, 354)
-hp = 2

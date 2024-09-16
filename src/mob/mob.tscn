@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://qwkuslpdpf7r"]
+
+[ext_resource type="Texture2D" uid="uid://dccv75kew61ie" path="res://assets/icon-evil.svg" id="1_koqlk"]
+[ext_resource type="Script" path="res://src/mob/mob.gd" id="1_uxywq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7cemh"]
+size = Vector2(26.0331, 126)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s2htm"]
+
+[node name="Mob" type="CharacterBody2D"]
+position = Vector2(652, 354)
+script = ExtResource("1_uxywq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_koqlk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(4.84, 1)
+shape = SubResource("RectangleShape2D_7cemh")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+scale = Vector2(28.6, 28.6)
+shape = SubResource("CircleShape2D_s2htm")
+
+[connection signal="hit" from="." to="." method="_on_hit"]
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_DetectRadius_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_DetectRadius_body_exited"]

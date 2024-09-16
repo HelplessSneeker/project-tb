@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgk4mhcjgvehs"]
+
+[ext_resource type="Script" path="res://src/player/player.gd" id="1_utqqj"]
+[ext_resource type="Texture2D" uid="uid://bf2tuo8vupb2b" path="res://assets/icon.svg" id="2_8txww"]
+[ext_resource type="PackedScene" uid="uid://crcwvytue7gwe" path="res://src/bullet/bullet.tscn" id="2_k470q"]
+[ext_resource type="Texture2D" uid="uid://b3q274arb2aeo" path="res://assets/Wall.png" id="4_4s1sp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sy2xw"]
+radius = 11.1773
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t115o"]
+size = Vector2(197, 200)
+
+[node name="Game" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_utqqj")
+Bullet = ExtResource("2_k470q")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("2_8txww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+scale = Vector2(6.8, 7.51011)
+shape = SubResource("CircleShape2D_sy2xw")
+
+[node name="Shooter" type="Marker2D" parent="CharacterBody2D"]
+position = Vector2(100, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(624, 350)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_4s1sp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_t115o")
