@@ -32,3 +32,5 @@ zoom = Vector2(0.8, 0.8)
 [node name="Mob2" parent="." groups=["mobs"] instance=ExtResource("4_r55kn")]
 position = Vector2(314, 354)
 hp = 2
+
+[connection signal="hit" from="Player" to="Player" method="_on_hit"]
