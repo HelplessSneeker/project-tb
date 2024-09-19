@@ -1,18 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgk4mhcjgvehs"]
+[gd_scene load_steps=12 format=4 uid="uid://bgk4mhcjgvehs"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_utqqj"]
 [ext_resource type="Texture2D" uid="uid://bf2tuo8vupb2b" path="res://assets/icon.svg" id="2_8txww"]
-[ext_resource type="PackedScene" uid="uid://crcwvytue7gwe" path="res://src/bullet/bullet.tscn" id="2_k470q"]
+[ext_resource type="PackedScene" uid="uid://crcwvytue7gwe" path="res://src/shooting/bullet/bullet.tscn" id="2_k470q"]
+[ext_resource type="Script" path="res://src/shooting/shooter/shooter.gd" id="4_o68j4"]
+[ext_resource type="Texture2D" uid="uid://bngpgvqag3vx5" path="res://assets/desert_eagle.png" id="4_pfmbb"]
 [ext_resource type="PackedScene" uid="uid://qwkuslpdpf7r" path="res://src/mob/mob.tscn" id="4_r55kn"]
+[ext_resource type="PackedScene" uid="uid://bgtdllokt8he4" path="res://src/enviorment/wall.tscn" id="5_c527e"]
+[ext_resource type="PackedScene" uid="uid://dy2ria6edn2oq" path="res://src/enviorment/floor.tscn" id="6_atydc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sy2xw"]
 radius = 11.1773
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_kjim3"]
+scenes/3/scene = ExtResource("5_c527e")
+scenes/4/scene = ExtResource("6_atydc")
+
+[sub_resource type="TileSet" id="TileSet_ty8wj"]
+tile_size = Vector2i(128, 128)
+sources/3 = SubResource("TileSetScenesCollectionSource_kjim3")
 
 [node name="Game" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 script = ExtResource("1_utqqj")
-Bullet = ExtResource("2_k470q")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 texture = ExtResource("2_8txww")
@@ -21,16 +32,30 @@ texture = ExtResource("2_8txww")
 scale = Vector2(6.8, 7.51011)
 shape = SubResource("CircleShape2D_sy2xw")
 
-[node name="Shooter" type="Marker2D" parent="Player"]
-position = Vector2(135, 0)
-
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(0.8, 0.8)
+zoom = Vector2(0.5, 0.5)
+
+[node name="Shooter" type="Node2D" parent="Player"]
+script = ExtResource("4_o68j4")
+Bullet = ExtResource("2_k470q")
+
+[node name="ShooterMarker" type="Marker2D" parent="Player/Shooter"]
+position = Vector2(197, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/Shooter/ShooterMarker"]
+position = Vector2(-58, 29)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_pfmbb")
 
 [node name="Mob" parent="." groups=["mobs"] instance=ExtResource("4_r55kn")]
+position = Vector2(-247, 354)
 
 [node name="Mob2" parent="." groups=["mobs"] instance=ExtResource("4_r55kn")]
 position = Vector2(314, 354)
-hp = 2
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD6/wAAAwAAAAAAAwD6/wEAAwAAAAAAAwD6/wIAAwAAAAAAAwD6/wMAAwAAAAAAAwD6/wQAAwAAAAAAAwD6/wUAAwAAAAAAAwD6/wYAAwAAAAAAAwD7/wYAAwAAAAAAAwD8/wYAAwAAAAAAAwD9/wYAAwAAAAAAAwD+/wYAAwAAAAAAAwD//wYAAwAAAAAAAwAAAAYAAwAAAAAAAwABAAYAAwAAAAAAAwACAAYAAwAAAAAAAwADAAYAAwAAAAAAAwAEAAYAAwAAAAAAAwAFAAYAAwAAAAAAAwAGAPr/AwAAAAAAAwD6//r/AwAAAAAAAwAGAAYAAwAAAAAAAwAGAAUAAwAAAAAAAwAGAAQAAwAAAAAAAwAGAAMAAwAAAAAAAwAGAAIAAwAAAAAAAwAGAAEAAwAAAAAAAwAGAAAAAwAAAAAAAwAGAP//AwAAAAAAAwAGAPz/AwAAAAAAAwAGAPv/AwAAAAAAAwAGAP7/AwAAAAAAAwAGAP3/AwAAAAAAAwAFAPr/AwAAAAAAAwAEAPr/AwAAAAAAAwADAPr/AwAAAAAAAwACAPr/AwAAAAAAAwABAPr/AwAAAAAAAwAAAPr/AwAAAAAAAwD///r/AwAAAAAAAwD+//r/AwAAAAAAAwD9//r/AwAAAAAAAwD8//r/AwAAAAAAAwD7//r/AwAAAAAAAwD6//v/AwAAAAAAAwD6//z/AwAAAAAAAwD6////AwAAAAAAAwD6//7/AwAAAAAAAwD6//3/AwAAAAAAAwD7//v/AwAAAAAABAD7//z/AwAAAAAABAD7//3/AwAAAAAABAD7//7/AwAAAAAABAD7////AwAAAAAABAD7/wAAAwAAAAAABAD7/wEAAwAAAAAABAD7/wIAAwAAAAAABAD7/wMAAwAAAAAABAD7/wQAAwAAAAAABAD7/wUAAwAAAAAABAD8//v/AwAAAAAABAD8//z/AwAAAAAABAD8//3/AwAAAAAABAD8//7/AwAAAAAABAD8////AwAAAAAABAD8/wAAAwAAAAAABAD8/wEAAwAAAAAABAD8/wIAAwAAAAAABAD8/wMAAwAAAAAABAD8/wQAAwAAAAAABAD8/wUAAwAAAAAABAD9//v/AwAAAAAABAD9//z/AwAAAAAABAD9//3/AwAAAAAABAD9//7/AwAAAAAABAD9////AwAAAAAABAD9/wAAAwAAAAAABAD9/wEAAwAAAAAABAD9/wIAAwAAAAAABAD9/wMAAwAAAAAABAD9/wQAAwAAAAAABAD9/wUAAwAAAAAABAD+//v/AwAAAAAABAD+//z/AwAAAAAABAD+//3/AwAAAAAABAD+//7/AwAAAAAABAD+////AwAAAAAABAD+/wAAAwAAAAAABAD+/wEAAwAAAAAABAD+/wIAAwAAAAAABAD+/wMAAwAAAAAABAD+/wQAAwAAAAAABAD+/wUAAwAAAAAABAD///v/AwAAAAAABAD///z/AwAAAAAABAD///3/AwAAAAAABAD///7/AwAAAAAABAD/////AwAAAAAABAD//wAAAwAAAAAABAD//wEAAwAAAAAABAD//wIAAwAAAAAABAD//wMAAwAAAAAABAD//wQAAwAAAAAABAD//wUAAwAAAAAABAAAAPv/AwAAAAAABAAAAPz/AwAAAAAABAAAAP3/AwAAAAAABAAAAP7/AwAAAAAABAAAAP//AwAAAAAABAAAAAAAAwAAAAAABAAAAAEAAwAAAAAABAAAAAIAAwAAAAAABAAAAAMAAwAAAAAABAAAAAQAAwAAAAAABAAAAAUAAwAAAAAABAABAPv/AwAAAAAABAABAPz/AwAAAAAABAABAP3/AwAAAAAABAABAP7/AwAAAAAABAABAP//AwAAAAAABAABAAAAAwAAAAAABAABAAEAAwAAAAAABAABAAIAAwAAAAAABAABAAMAAwAAAAAABAABAAQAAwAAAAAABAABAAUAAwAAAAAABAACAPv/AwAAAAAABAACAPz/AwAAAAAABAACAP3/AwAAAAAABAACAP7/AwAAAAAABAACAP//AwAAAAAABAACAAAAAwAAAAAABAACAAEAAwAAAAAABAACAAIAAwAAAAAABAACAAMAAwAAAAAABAACAAQAAwAAAAAABAACAAUAAwAAAAAABAADAPv/AwAAAAAABAADAPz/AwAAAAAABAADAP3/AwAAAAAABAADAP7/AwAAAAAABAADAP//AwAAAAAABAADAAAAAwAAAAAABAADAAEAAwAAAAAABAADAAIAAwAAAAAABAADAAMAAwAAAAAABAADAAQAAwAAAAAABAADAAUAAwAAAAAABAAEAPv/AwAAAAAABAAEAPz/AwAAAAAABAAEAP3/AwAAAAAABAAEAP7/AwAAAAAABAAEAP//AwAAAAAABAAEAAAAAwAAAAAABAAEAAEAAwAAAAAABAAEAAIAAwAAAAAABAAEAAMAAwAAAAAABAAEAAQAAwAAAAAABAAEAAUAAwAAAAAABAAFAPv/AwAAAAAABAAFAPz/AwAAAAAABAAFAP3/AwAAAAAABAAFAP7/AwAAAAAABAAFAP//AwAAAAAABAAFAAAAAwAAAAAABAAFAAEAAwAAAAAABAAFAAIAAwAAAAAABAAFAAMAAwAAAAAABAAFAAQAAwAAAAAABAAFAAUAAwAAAAAABAA=")
+tile_set = SubResource("TileSet_ty8wj")
 
 [connection signal="hit" from="Player" to="Player" method="_on_hit"]
+[connection signal="shoot" from="Player/Shooter" to="Player/Shooter" method="_on_shoot"]

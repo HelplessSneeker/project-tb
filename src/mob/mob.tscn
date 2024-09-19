@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://qwkuslpdpf7r"]
+[gd_scene load_steps=7 format=3 uid="uid://qwkuslpdpf7r"]
 
 [ext_resource type="Texture2D" uid="uid://dccv75kew61ie" path="res://assets/icon-evil.svg" id="1_koqlk"]
 [ext_resource type="Script" path="res://src/mob/mob.gd" id="1_uxywq"]
+[ext_resource type="Script" path="res://src/mob/damage_hitbox.gd" id="3_pi4co"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7cemh"]
 size = Vector2(26.0331, 126)
@@ -14,7 +15,6 @@ size = Vector2(20.0319, 102.967)
 [node name="Mob" type="CharacterBody2D"]
 position = Vector2(652, 354)
 script = ExtResource("1_uxywq")
-hp = 200
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_koqlk")
@@ -25,7 +25,6 @@ scale = Vector2(4.84, 1)
 shape = SubResource("RectangleShape2D_7cemh")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 scale = Vector2(28.6, 28.6)
@@ -33,6 +32,7 @@ shape = SubResource("CircleShape2D_s2htm")
 
 [node name="DamageHitbox" type="Area2D" parent="."]
 scale = Vector2(1.28, 1.28)
+script = ExtResource("3_pi4co")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHitbox"]
 position = Vector2(-0.100037, -2.15991)
@@ -42,4 +42,5 @@ shape = SubResource("RectangleShape2D_ywueq")
 [connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_detect_radius_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_detect_radius_body_exited"]
-[connection signal="body_entered" from="DamageHitbox" to="." method="_on_damage_hitbox_body_entered"]
+[connection signal="body_entered" from="DamageHitbox" to="DamageHitbox" method="_on_body_entered"]
+[connection signal="body_exited" from="DamageHitbox" to="DamageHitbox" method="_on_body_exited"]
