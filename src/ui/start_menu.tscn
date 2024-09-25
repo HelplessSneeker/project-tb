@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://rkxryfyxct41"]
+
+[ext_resource type="Script" path="res://src/ui/start_menu.gd" id="1_ev8y2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5vem1"]
+font_size = 100
+
+[node name="StartMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -557.0
+offset_top = -96.0
+offset_right = 557.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ev8y2")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/GridContainer"]
+layout_mode = 2
+text = "Gooner Wilkommen"
+label_settings = SubResource("LabelSettings_5vem1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="CenterContainer/GridContainer"]
+layout_mode = 2
+text = "Play"
+
+[connection signal="pressed" from="CenterContainer/GridContainer/PlayButton" to="." method="_on_play_button_pressed"]

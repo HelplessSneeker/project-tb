@@ -22,7 +22,7 @@ func _physics_process(delta):
 	get_input(delta)
 	
 func die():
-	queue_free()
+	get_tree().change_scene_to_file("res://src/ui/start_menu.tscn")
 	
 func _on_hit(damage: int) -> void:
 	hp -=damage
