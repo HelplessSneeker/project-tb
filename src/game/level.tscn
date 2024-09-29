@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=4 uid="uid://c2soamuilmd4i"]
+[gd_scene load_steps=13 format=4 uid="uid://c2soamuilmd4i"]
 
+[ext_resource type="Script" path="res://src/game/level.gd" id="1_87trg"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_gscqw"]
 [ext_resource type="Texture2D" uid="uid://bf2tuo8vupb2b" path="res://assets/icon.svg" id="2_63uym"]
 [ext_resource type="Script" path="res://src/shooting/shooter/shooter.gd" id="3_pbob1"]
@@ -21,6 +22,7 @@ tile_size = Vector2i(128, 128)
 sources/3 = SubResource("TileSetScenesCollectionSource_kjim3")
 
 [node name="Level" type="Node"]
+script = ExtResource("1_87trg")
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 script = ExtResource("1_gscqw")

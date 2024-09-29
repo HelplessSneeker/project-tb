@@ -1,9 +1,10 @@
-extends DamageBase
+extends EntitiyBase
 
 @export var speed = 100;
 @export var max_hp: int = 5
 
 var player = null
+
 
 func _init() -> void:
 	hp=max_hp
@@ -11,11 +12,11 @@ func _init() -> void:
 func die():
 	queue_free()
 
-func _on_hit(damage: int) -> void:
-	hp -=damage
+func _on_hit(damage: int, k: Vector2) -> void:
+	self._on_entity_hit(damage, k);
 	
 func _physics_process(delta):
-	velocity = Vector2.ZERO;
+	self._handle_knockback(delta);
 	follow_player()
 	move_and_slide()
 	

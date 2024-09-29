@@ -1,4 +1,4 @@
-extends DamageBase
+extends EntitiyBase
 
 @export var max_hp: int = 5;
 
@@ -24,6 +24,5 @@ func _physics_process(delta):
 func die():
 	get_tree().change_scene_to_file("res://src/ui/start_menu.tscn")
 	
-func _on_hit(damage: int) -> void:
-	hp -=damage
-	move_and_slide()
+func _on_hit(damage: int, k: Vector2) -> void:
+	self._on_entity_hit(damage, k);
