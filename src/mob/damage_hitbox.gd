@@ -1,22 +1,15 @@
 extends Area2D
 
 @export var damage = 1
-@export var damage_tic = 1
-
-@onready var update_delta : float = 1 / damage_tic
+@export var knockback_modifier = 500;
 
 var body_list = [];
-var damage_time = 0;
-
 
 
 func _physics_process(delta: float) -> void:
 	for body_object in body_list:
-		damage_time += delta
-		if (damage_time < update_delta):
-			return
-		body_object.emit_signal("hit", damage)
-		damage_time = 0;
+		var knockback = ( global_position.direction_to(body_object.position) ) * knockback_modifier;
+		body_object.emit_signal("hit", damage, knockback);
 
 
 func _on_body_entered(body: Node2D) -> void:

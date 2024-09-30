@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://crcwvytue7gwe"]
+[gd_scene load_steps=5 format=3 uid="uid://crcwvytue7gwe"]
 
 [ext_resource type="Script" path="res://src/shooting/bullet/bullet.gd" id="1_t8yvn"]
-[ext_resource type="Texture2D" uid="uid://2rq41ef8fm5j" path="res://assets/bullet.png" id="2_p8owg"]
+[ext_resource type="Texture2D" uid="uid://cr02qnas0dgg6" path="res://assets/Tileset.png" id="2_0k3cw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn0hy"]
+atlas = ExtResource("2_0k3cw")
+region = Rect2(1728, 9, 330, 277)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3rhbh"]
 radius = 16.5496
@@ -11,8 +15,8 @@ height = 55.1654
 script = ExtResource("1_t8yvn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 1.5708
-texture = ExtResource("2_p8owg")
+scale = Vector2(0.4, 0.4)
+texture = SubResource("AtlasTexture_dn0hy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.61718, -0.181273)

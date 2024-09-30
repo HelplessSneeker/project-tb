@@ -5,7 +5,6 @@ extends EntitiyBase
 
 var player = null
 
-
 func _init() -> void:
 	hp=max_hp
 
@@ -22,7 +21,7 @@ func _physics_process(delta):
 	
 func follow_player():
 	if player:
-		velocity = position.direction_to(player.position) * speed
+		velocity = position.direction_to(player.position) * speed + knockback
 	
 func _on_detect_radius_body_entered(body):
 	if body.is_in_group("player"):

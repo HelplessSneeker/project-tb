@@ -4,7 +4,7 @@ extends CharacterBody2D
 signal hit(damage: int)
 
 var knockback = Vector2.ZERO;
-var knockback_cooldown = 1;
+var knockback_duration = 0.2;
 var knockback_time = 0;
 
 
@@ -21,7 +21,7 @@ func _on_entity_hit(damage: int, k: Vector2) -> void:
 func _handle_knockback(delta: float) -> void:
 	velocity = Vector2.ZERO + knockback;
 	knockback_time += delta
-	if(knockback_time >= knockback_cooldown):
+	if(knockback_time >= knockback_duration):
 		knockback = Vector2.ZERO
 		knockback_time = 0
 
