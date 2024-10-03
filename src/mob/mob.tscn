@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://qwkuslpdpf7r"]
 
-[ext_resource type="Texture2D" uid="uid://dccv75kew61ie" path="res://assets/icon-evil.svg" id="1_koqlk"]
+[ext_resource type="Texture2D" uid="uid://dccv75kew61ie" path="res://assets/random/icon-evil.svg" id="1_koqlk"]
 [ext_resource type="Script" path="res://src/mob/mob.gd" id="1_uxywq"]
 [ext_resource type="Script" path="res://src/mob/damage_hitbox.gd" id="3_pi4co"]
 

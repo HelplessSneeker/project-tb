@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bngpgvqag3vx5"
-path="res://.godot/imported/desert_eagle.png-652bfbd8e92cf78ea365b6b75c5c25b5.ctex"
+path="res://.godot/imported/desert_eagle.png-2ae5ca91aa17a6dbc8a7f980981c056f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/desert_eagle.png"
-dest_files=["res://.godot/imported/desert_eagle.png-652bfbd8e92cf78ea365b6b75c5c25b5.ctex"]
+source_file="res://assets/random/desert_eagle.png"
+dest_files=["res://.godot/imported/desert_eagle.png-2ae5ca91aa17a6dbc8a7f980981c056f.ctex"]
 
 [params]
 

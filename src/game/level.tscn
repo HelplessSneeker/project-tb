@@ -1,21 +1,55 @@
-[gd_scene load_steps=14 format=4 uid="uid://c2soamuilmd4i"]
+[gd_scene load_steps=17 format=4 uid="uid://c2soamuilmd4i"]
 
 [ext_resource type="Script" path="res://src/game/level.gd" id="1_87trg"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_gscqw"]
-[ext_resource type="Texture2D" uid="uid://cr02qnas0dgg6" path="res://assets/Tileset.png" id="3_ncfo2"]
 [ext_resource type="Script" path="res://src/shooting/shooter/shooter.gd" id="3_pbob1"]
 [ext_resource type="PackedScene" uid="uid://crcwvytue7gwe" path="res://src/shooting/bullet/bullet.tscn" id="4_b4vvo"]
-[ext_resource type="Texture2D" uid="uid://bngpgvqag3vx5" path="res://assets/desert_eagle.png" id="5_w0y5a"]
+[ext_resource type="Texture2D" uid="uid://bngpgvqag3vx5" path="res://assets/random/desert_eagle.png" id="5_w0y5a"]
 [ext_resource type="PackedScene" uid="uid://qwkuslpdpf7r" path="res://src/mob/mob.tscn" id="6_37hqr"]
+[ext_resource type="Texture2D" uid="uid://bxxd3bwcww4xy" path="res://assets/player/player_standard.tres" id="6_xia45"]
+[ext_resource type="Texture2D" uid="uid://sabvnhgfvq70" path="res://assets/player/player_up.tres" id="7_diq4w"]
 [ext_resource type="PackedScene" uid="uid://bgtdllokt8he4" path="res://src/enviorment/wall.tscn" id="7_du1cr"]
+[ext_resource type="Texture2D" uid="uid://bljxlee4wyrtd" path="res://assets/player/player_left.tres" id="7_pie3l"]
+[ext_resource type="Texture2D" uid="uid://bt4qup1jv2tsp" path="res://assets/player/player_right.tres" id="8_qgr7m"]
 [ext_resource type="PackedScene" uid="uid://dy2ria6edn2oq" path="res://src/enviorment/floor.tscn" id="8_r0f2e"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sbmg7"]
-atlas = ExtResource("3_ncfo2")
-region = Rect2(583, -1, 229, 285)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sy2xw"]
 radius = 11.1773
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sovis"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_xia45")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_pie3l")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_qgr7m")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_diq4w")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_kjim3"]
 scenes/3/scene = ExtResource("7_du1cr")
@@ -31,15 +65,9 @@ script = ExtResource("1_87trg")
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 script = ExtResource("1_gscqw")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = SubResource("AtlasTexture_sbmg7")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 scale = Vector2(6.8, 7.51011)
 shape = SubResource("CircleShape2D_sy2xw")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(0.5, 0.5)
 
 [node name="Shooter" type="Node2D" parent="Player"]
 script = ExtResource("3_pbob1")
@@ -52,6 +80,13 @@ position = Vector2(197, 0)
 position = Vector2(-58, 29)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_w0y5a")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.5, 0.5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_sovis")
+animation = &"left"
 
 [node name="Mob" parent="." groups=["mobs"] instance=ExtResource("6_37hqr")]
 position = Vector2(-247, 354)

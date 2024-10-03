@@ -1,0 +1,10 @@
+[gd_resource type="AtlasTexture" load_steps=3 format=3 uid="uid://sabvnhgfvq70"]
+
+[ext_resource type="Texture2D" uid="uid://cr02qnas0dgg6" path="res://assets/random/Tileset.png" id="1_iebwv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apikx"]
+atlas = ExtResource("1_iebwv")
+region = Rect2(1457, 62, 201, 185)
+
+[resource]
+atlas = SubResource("AtlasTexture_apikx")
