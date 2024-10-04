@@ -1,25 +1,61 @@
-[gd_scene load_steps=5 format=3 uid="uid://crcwvytue7gwe"]
+[gd_scene load_steps=12 format=3 uid="uid://crcwvytue7gwe"]
 
 [ext_resource type="Script" path="res://src/shooting/bullet/bullet.gd" id="1_t8yvn"]
-[ext_resource type="Texture2D" uid="uid://cr02qnas0dgg6" path="res://assets/random/Tileset.png" id="2_0k3cw"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dn0hy"]
-atlas = ExtResource("2_0k3cw")
-region = Rect2(1728, 9, 330, 277)
+[ext_resource type="Texture2D" uid="uid://bawb1giq2sgjx" path="res://assets/Bullet Animation Frames/Bullet 1.png" id="2_rhv5n"]
+[ext_resource type="Texture2D" uid="uid://b8uouocp204ei" path="res://assets/Bullet Animation Frames/Bullet 2.png" id="3_83eqo"]
+[ext_resource type="Texture2D" uid="uid://b3043t0mx533y" path="res://assets/Bullet Animation Frames/Bullet 3.png" id="4_v8ks6"]
+[ext_resource type="Texture2D" uid="uid://pppff2q0cc60" path="res://assets/Bullet Animation Frames/Bullet 4.png" id="5_6c5qo"]
+[ext_resource type="Texture2D" uid="uid://bjb6yloeke4yc" path="res://assets/Bullet Animation Frames/Bullet 5.png" id="6_darht"]
+[ext_resource type="Texture2D" uid="uid://deifwwx0g58p6" path="res://assets/Bullet Animation Frames/Bullet 6.png" id="7_86rjt"]
+[ext_resource type="Texture2D" uid="uid://impdcwflhtyi" path="res://assets/Bullet Animation Frames/Bullet 7.png" id="8_emtep"]
+[ext_resource type="Texture2D" uid="uid://cvx5eh5keyohn" path="res://assets/Bullet Animation Frames/Bullet 8.png" id="9_dof8y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3rhbh"]
-radius = 16.5496
-height = 55.1654
+radius = 6.22196
+height = 92.8372
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_626s0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rhv5n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_83eqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_v8ks6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6c5qo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_darht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_86rjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_emtep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_dof8y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_t8yvn")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
-texture = SubResource("AtlasTexture_dn0hy")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(1.61718, -0.181273)
+position = Vector2(5, -2)
+scale = Vector2(6.28641, -0.674107)
 shape = SubResource("CapsuleShape2D_3rhbh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_626s0")
+autoplay = "default"
 
 [connection signal="body_entered" from="." to="." method="_on_bullet_body_entered"]

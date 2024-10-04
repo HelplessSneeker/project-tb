@@ -5,7 +5,7 @@ extends EntitiyBase
 
 var player = null
 
-func _init() -> void:
+func _ready() -> void:
 	hp=max_hp
 
 func die():
@@ -16,12 +16,20 @@ func _on_hit(damage: int, k: Vector2) -> void:
 	
 func _physics_process(delta):
 	self._handle_knockback(delta);
+	$AnimatedSprite2D.play("default")
 	follow_player()
 	move_and_slide()
 	
 func follow_player():
-	if player:
-		velocity = position.direction_to(player.position) * speed + knockback
+	if player && knockback == Vector2.ZERO:
+		var direction = position.direction_to(player.position);
+		velocity = direction * speed + knockback
+		if(direction.y < 0):
+			$AnimatedSprite2D.play("up")
+		elif(direction.x < 0):
+			$AnimatedSprite2D.play("left")
+		elif(direction.x > 0):
+			$AnimatedSprite2D.play("right")
 	
 func _on_detect_radius_body_entered(body):
 	if body.is_in_group("player"):

@@ -3,12 +3,15 @@
 [ext_resource type="Texture2D" uid="uid://bgp53fhrmniwm" path="res://assets/Tileset/Wall.png" id="1_w1gpb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ja0aj"]
+size = Vector2(9.7561, 9.50299)
 
 [node name="Wall" type="StaticBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(6.56, 6.62949)
+position = Vector2(-1.90735e-06, 0.500002)
+scale = Vector2(26.5483, 26.8295)
 shape = SubResource("RectangleShape2D_ja0aj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.99256, 1.91667)
 texture = ExtResource("1_w1gpb")

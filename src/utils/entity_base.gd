@@ -6,16 +6,18 @@ signal hit(damage: int)
 var knockback = Vector2.ZERO;
 var knockback_duration = 0.2;
 var knockback_time = 0;
+var invulnerable = false;
 
 
-var hp: int = 5:
+var hp: int:
 	set(value):
 		hp = value
 		if hp <= 0:
 			die()
 
 func _on_entity_hit(damage: int, k: Vector2) -> void:
-	hp -=damage
+	if(!invulnerable):
+		hp -=damage
 	knockback = k;
 	
 func _handle_knockback(delta: float) -> void:

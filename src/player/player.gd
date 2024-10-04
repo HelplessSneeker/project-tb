@@ -5,9 +5,8 @@ extends EntitiyBase
 @onready var invulnerability_duration = 1
 
 var invulnerability_time = 0
-var invulnerable = false;
 
-func _init() -> void:
+func _ready() -> void:
 	hp = max_hp
 
 func get_input(delta):
@@ -23,7 +22,6 @@ func move(input_direction: Vector2):
 		$AnimatedSprite2D.play("left")
 	elif(input_direction.x > 0):
 		$AnimatedSprite2D.play("right")
-
 	else:
 		$AnimatedSprite2D.play("default")
 	velocity = input_direction * speed
@@ -50,6 +48,5 @@ func die():
 	get_tree().change_scene_to_file("res://src/ui/start_menu.tscn")
 	
 func _on_hit(damage: int, k: Vector2) -> void:
-	if(!invulnerable ):
-		invulnerable = true;
 		self._on_entity_hit(damage, k);
+		invulnerable = true;
