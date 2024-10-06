@@ -1,56 +1,11 @@
-[gd_scene load_steps=18 format=4 uid="uid://c2soamuilmd4i"]
+[gd_scene load_steps=9 format=4 uid="uid://c2soamuilmd4i"]
 
 [ext_resource type="Script" path="res://src/game/level.gd" id="1_87trg"]
-[ext_resource type="Script" path="res://src/player/player.gd" id="1_gscqw"]
-[ext_resource type="Script" path="res://src/shooting/shooter/shooter.gd" id="3_pbob1"]
-[ext_resource type="PackedScene" uid="uid://crcwvytue7gwe" path="res://src/shooting/bullet/bullet.tscn" id="4_b4vvo"]
-[ext_resource type="Texture2D" uid="uid://bngpgvqag3vx5" path="res://assets/random/desert_eagle.png" id="5_w0y5a"]
+[ext_resource type="PackedScene" uid="uid://bvaoinmi0hocm" path="res://src/player/player.tscn" id="2_uteke"]
 [ext_resource type="PackedScene" uid="uid://qwkuslpdpf7r" path="res://src/mob/mob.tscn" id="6_37hqr"]
-[ext_resource type="Texture2D" uid="uid://bxxd3bwcww4xy" path="res://assets/player/player_standard.tres" id="6_xia45"]
-[ext_resource type="Texture2D" uid="uid://sabvnhgfvq70" path="res://assets/player/player_up.tres" id="7_diq4w"]
 [ext_resource type="PackedScene" uid="uid://bgtdllokt8he4" path="res://src/enviorment/wall.tscn" id="7_du1cr"]
-[ext_resource type="Texture2D" uid="uid://bljxlee4wyrtd" path="res://assets/player/player_left.tres" id="7_pie3l"]
-[ext_resource type="Texture2D" uid="uid://bt4qup1jv2tsp" path="res://assets/player/player_right.tres" id="8_qgr7m"]
 [ext_resource type="PackedScene" uid="uid://dy2ria6edn2oq" path="res://src/enviorment/floor.tscn" id="8_r0f2e"]
 [ext_resource type="PackedScene" uid="uid://bphf081gt14b4" path="res://src/HUD/hud.tscn" id="13_dlb62"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_sy2xw"]
-radius = 11.1773
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_sovis"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_xia45")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_pie3l")
-}],
-"loop": true,
-"name": &"left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_qgr7m")
-}],
-"loop": true,
-"name": &"right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_diq4w")
-}],
-"loop": true,
-"name": &"up",
-"speed": 5.0
-}]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_kjim3"]
 scenes/3/scene = ExtResource("7_du1cr")
@@ -63,33 +18,7 @@ sources/3 = SubResource("TileSetScenesCollectionSource_kjim3")
 [node name="Level" type="Node"]
 script = ExtResource("1_87trg")
 
-[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
-script = ExtResource("1_gscqw")
-speed = 600
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-scale = Vector2(4.80996, 4.80996)
-shape = SubResource("CircleShape2D_sy2xw")
-
-[node name="Shooter" type="Node2D" parent="Player"]
-script = ExtResource("3_pbob1")
-fire_rate = 5.0
-Bullet = ExtResource("4_b4vvo")
-
-[node name="ShooterMarker" type="Marker2D" parent="Player/Shooter"]
-position = Vector2(97, 7)
-
-[node name="Sprite2D" type="Sprite2D" parent="Player/Shooter/ShooterMarker"]
-position = Vector2(0, 5)
-rotation = 0.40071
-scale = Vector2(0.0851526, 0.0851526)
-texture = ExtResource("5_w0y5a")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_sovis")
+[node name="Player" parent="." instance=ExtResource("2_uteke")]
 
 [node name="Mob" parent="." groups=["mobs"] instance=ExtResource("6_37hqr")]
 position = Vector2(-247, 354)
@@ -107,7 +36,5 @@ tile_set = SubResource("TileSet_ty8wj")
 
 [node name="HUD" parent="." instance=ExtResource("13_dlb62")]
 
-[connection signal="hit" from="Player" to="Player" method="_on_hit"]
 [connection signal="hp_changed" from="Player" to="HUD" method="_on_player_hp_changed"]
 [connection signal="set_max_hp" from="Player" to="HUD" method="_on_player_set_max_hp"]
-[connection signal="shoot" from="Player/Shooter" to="Player/Shooter" method="_on_shoot"]

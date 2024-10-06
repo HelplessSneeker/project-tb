@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=3 uid="uid://bvaoinmi0hocm"]
 
-[ext_resource type="Script" path="res://src/player/player.gd" id="1_oed5x"]
-[ext_resource type="Script" path="res://src/shooting/shooter/shooter.gd" id="2_uembw"]
-[ext_resource type="PackedScene" uid="uid://crcwvytue7gwe" path="res://src/shooting/bullet/bullet.tscn" id="3_2u4k6"]
-[ext_resource type="Texture2D" uid="uid://bngpgvqag3vx5" path="res://assets/random/desert_eagle.png" id="4_q04jr"]
-[ext_resource type="Texture2D" uid="uid://bxxd3bwcww4xy" path="res://assets/player/player_standard.tres" id="5_ir11t"]
-[ext_resource type="Texture2D" uid="uid://bljxlee4wyrtd" path="res://assets/player/player_left.tres" id="6_shlrn"]
-[ext_resource type="Texture2D" uid="uid://bt4qup1jv2tsp" path="res://assets/player/player_right.tres" id="7_bc0ql"]
-[ext_resource type="Texture2D" uid="uid://sabvnhgfvq70" path="res://assets/player/player_up.tres" id="8_gwcoc"]
+[ext_resource type="Script" path="res://src/player/player.gd" id="1_6r57x"]
+[ext_resource type="Script" path="res://src/shooting/shooter/shooter.gd" id="2_yr1xv"]
+[ext_resource type="PackedScene" uid="uid://crcwvytue7gwe" path="res://src/shooting/bullet/bullet.tscn" id="3_g10ko"]
+[ext_resource type="Texture2D" uid="uid://bngpgvqag3vx5" path="res://assets/random/desert_eagle.png" id="4_7ut30"]
+[ext_resource type="Texture2D" uid="uid://bxxd3bwcww4xy" path="res://assets/player/player_standard.tres" id="5_31u8r"]
+[ext_resource type="Texture2D" uid="uid://bljxlee4wyrtd" path="res://assets/player/player_left.tres" id="6_mdpni"]
+[ext_resource type="Texture2D" uid="uid://bt4qup1jv2tsp" path="res://assets/player/player_right.tres" id="7_tapmj"]
+[ext_resource type="Texture2D" uid="uid://sabvnhgfvq70" path="res://assets/player/player_up.tres" id="8_nii26"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sy2xw"]
 radius = 11.1773
@@ -16,7 +16,7 @@ radius = 11.1773
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_ir11t")
+"texture": ExtResource("5_31u8r")
 }],
 "loop": true,
 "name": &"default",
@@ -24,7 +24,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_shlrn")
+"texture": ExtResource("6_mdpni")
 }],
 "loop": true,
 "name": &"left",
@@ -32,7 +32,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_bc0ql")
+"texture": ExtResource("7_tapmj")
 }],
 "loop": true,
 "name": &"right",
@@ -40,26 +40,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_gwcoc")
+"texture": ExtResource("8_nii26")
 }],
 "loop": true,
 "name": &"up",
 "speed": 5.0
 }]
 
-[node name="Player" type="RigidBody2D" groups=["player"]]
-script = ExtResource("1_oed5x")
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_6r57x")
 speed = 600
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(4.80996, 4.80996)
 shape = SubResource("CircleShape2D_sy2xw")
-debug_color = Color(2.98411e-06, 0.591671, 0.745588, 0.42)
 
 [node name="Shooter" type="Node2D" parent="."]
-script = ExtResource("2_uembw")
+script = ExtResource("2_yr1xv")
 fire_rate = 5.0
-Bullet = ExtResource("3_2u4k6")
+Bullet = ExtResource("3_g10ko")
 
 [node name="ShooterMarker" type="Marker2D" parent="Shooter"]
 position = Vector2(97, 7)
@@ -68,7 +67,7 @@ position = Vector2(97, 7)
 position = Vector2(0, 5)
 rotation = 0.40071
 scale = Vector2(0.0851526, 0.0851526)
-texture = ExtResource("4_q04jr")
+texture = ExtResource("4_7ut30")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

@@ -9,7 +9,6 @@ var knockback_duration = 0.2;
 var knockback_time = 0;
 var invulnerable = false;
 
-
 var hp: int:
 	set(value):
 		hp = value
