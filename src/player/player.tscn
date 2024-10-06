@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://bvaoinmi0hocm"]
+
+[ext_resource type="Script" path="res://src/player/player.gd" id="1_oed5x"]
+[ext_resource type="Script" path="res://src/shooting/shooter/shooter.gd" id="2_uembw"]
+[ext_resource type="PackedScene" uid="uid://crcwvytue7gwe" path="res://src/shooting/bullet/bullet.tscn" id="3_2u4k6"]
+[ext_resource type="Texture2D" uid="uid://bngpgvqag3vx5" path="res://assets/random/desert_eagle.png" id="4_q04jr"]
+[ext_resource type="Texture2D" uid="uid://bxxd3bwcww4xy" path="res://assets/player/player_standard.tres" id="5_ir11t"]
+[ext_resource type="Texture2D" uid="uid://bljxlee4wyrtd" path="res://assets/player/player_left.tres" id="6_shlrn"]
+[ext_resource type="Texture2D" uid="uid://bt4qup1jv2tsp" path="res://assets/player/player_right.tres" id="7_bc0ql"]
+[ext_resource type="Texture2D" uid="uid://sabvnhgfvq70" path="res://assets/player/player_up.tres" id="8_gwcoc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sy2xw"]
+radius = 11.1773
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sovis"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ir11t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_shlrn")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_bc0ql")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_gwcoc")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[node name="Player" type="RigidBody2D" groups=["player"]]
+script = ExtResource("1_oed5x")
+speed = 600
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(4.80996, 4.80996)
+shape = SubResource("CircleShape2D_sy2xw")
+debug_color = Color(2.98411e-06, 0.591671, 0.745588, 0.42)
+
+[node name="Shooter" type="Node2D" parent="."]
+script = ExtResource("2_uembw")
+fire_rate = 5.0
+Bullet = ExtResource("3_2u4k6")
+
+[node name="ShooterMarker" type="Marker2D" parent="Shooter"]
+position = Vector2(97, 7)
+
+[node name="Sprite2D" type="Sprite2D" parent="Shooter/ShooterMarker"]
+position = Vector2(0, 5)
+rotation = 0.40071
+scale = Vector2(0.0851526, 0.0851526)
+texture = ExtResource("4_q04jr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_sovis")
+
+[connection signal="hit" from="." to="." method="_on_hit"]
+[connection signal="shoot" from="Shooter" to="Shooter" method="_on_shoot"]

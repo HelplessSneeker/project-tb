@@ -4,10 +4,13 @@ extends EntitiyBase
 @export var speed = 400
 @onready var invulnerability_duration = 1
 
+signal set_max_hp(hp: int)
+
 var invulnerability_time = 0
 
 func _ready() -> void:
 	hp = max_hp
+	emit_signal("set_max_hp", max_hp)
 
 func get_input(delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")

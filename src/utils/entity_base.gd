@@ -2,6 +2,7 @@ class_name EntitiyBase
 extends CharacterBody2D
 
 signal hit(damage: int)
+signal hp_changed(hp: int)
 
 var knockback = Vector2.ZERO;
 var knockback_duration = 0.2;
@@ -12,6 +13,7 @@ var invulnerable = false;
 var hp: int:
 	set(value):
 		hp = value
+		emit_signal("hp_changed", hp)
 		if hp <= 0:
 			die()
 
