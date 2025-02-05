@@ -1,0 +1,25 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=11 format=3 uid="uid://c05c8qu2c1nem"]
+
+[ext_resource type="AudioStream" uid="uid://chouulumowweo" path="res://sounds/raw/zombie gtting hit/Sound FX Beni Game - Track 1.wav" id="1_isktu"]
+[ext_resource type="AudioStream" uid="uid://dxe1q0gjhypi6" path="res://sounds/raw/zombie gtting hit/Sound FX Beni Game - Track 2.wav" id="2_sjoqe"]
+[ext_resource type="AudioStream" uid="uid://b14dhn0khxv5s" path="res://sounds/raw/zombie gtting hit/Sound FX Beni Game - Track 3.wav" id="3_d53if"]
+[ext_resource type="AudioStream" uid="uid://cprcl1bckwbk0" path="res://sounds/raw/zombie gtting hit/Sound FX Beni Game - Track 4.wav" id="4_seji7"]
+[ext_resource type="AudioStream" uid="uid://bfki8yvycf8a" path="res://sounds/raw/zombie gtting hit/Sound FX Beni Game - Track 5.wav" id="5_kpqgd"]
+[ext_resource type="AudioStream" uid="uid://7w2q8vrxty5t" path="res://sounds/raw/zombie gtting hit/Sound FX Beni Game - Track 6.wav" id="6_8hear"]
+[ext_resource type="AudioStream" uid="uid://7435m75h24do" path="res://sounds/raw/zombie gtting hit/Sound FX Beni Game - Track 7.wav" id="7_61po6"]
+[ext_resource type="AudioStream" uid="uid://cqqwu2o5knq1a" path="res://sounds/raw/zombie gtting hit/Sound FX Beni Game - Track 8.wav" id="8_2bk67"]
+[ext_resource type="AudioStream" uid="uid://uje6envxmx4a" path="res://sounds/raw/zombie gtting hit/Sound FX Beni Game - Track 9.wav" id="9_ajsf4"]
+[ext_resource type="AudioStream" uid="uid://dbc4mswe835qk" path="res://sounds/raw/zombie gtting hit/Sound FX Beni Game - Track 10.wav" id="10_6m8cj"]
+
+[resource]
+streams_count = 10
+stream_0/stream = ExtResource("1_isktu")
+stream_1/stream = ExtResource("2_sjoqe")
+stream_2/stream = ExtResource("3_d53if")
+stream_3/stream = ExtResource("4_seji7")
+stream_4/stream = ExtResource("5_kpqgd")
+stream_5/stream = ExtResource("6_8hear")
+stream_6/stream = ExtResource("7_61po6")
+stream_7/stream = ExtResource("8_2bk67")
+stream_8/stream = ExtResource("9_ajsf4")
+stream_9/stream = ExtResource("10_6m8cj")

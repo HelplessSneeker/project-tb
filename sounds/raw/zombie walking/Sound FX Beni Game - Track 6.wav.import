@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b3kx2lkb26wye"
+path="res://.godot/imported/Sound FX Beni Game - Track 6.wav-e75e3fa8605388f99afda0ea728a001f.sample"
+
+[deps]
+
+source_file="res://sounds/raw/zombie walking/Sound FX Beni Game - Track 6.wav"
+dest_files=["res://.godot/imported/Sound FX Beni Game - Track 6.wav-e75e3fa8605388f99afda0ea728a001f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

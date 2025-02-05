@@ -9,9 +9,13 @@ func _ready() -> void:
 	hp=max_hp
 
 func die():
-	queue_free()
+	dead = true;
+	$DamageHitbox.queue_free();
+	$DeathSound.connect("finished", Callable(self, "queue_free"))
+	$DeathSound.play();
 
 func _on_hit(damage: int, k: Vector2) -> void:
+	$HitSound.play()
 	self._on_entity_hit(damage, k);
 	
 func _physics_process(delta):
@@ -21,7 +25,9 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func follow_player():
-	if player && knockback == Vector2.ZERO:
+	if player && knockback == Vector2.ZERO && !dead:
+		if (!$FollowSound.is_playing()):
+			$FollowSound.play();
 		var direction = position.direction_to(player.position);
 		velocity = direction * speed + knockback
 		if(direction.y < 0):

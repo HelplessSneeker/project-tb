@@ -8,6 +8,7 @@ var knockback = Vector2.ZERO;
 var knockback_duration = 0.2;
 var knockback_time = 0;
 var invulnerable = false;
+var dead = false;
 
 var hp: int:
 	set(value):
@@ -17,7 +18,7 @@ var hp: int:
 			die()
 
 func _on_entity_hit(damage: int, k: Vector2) -> void:
-	if(!invulnerable):
+	if(!invulnerable && !dead):
 		hp -=damage
 	knockback = k;
 	

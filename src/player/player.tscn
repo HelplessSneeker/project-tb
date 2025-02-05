@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvaoinmi0hocm"]
+[gd_scene load_steps=12 format=3 uid="uid://bvaoinmi0hocm"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_6r57x"]
 [ext_resource type="Script" path="res://src/shooting/shooter/shooter.gd" id="2_yr1xv"]
 [ext_resource type="PackedScene" uid="uid://crcwvytue7gwe" path="res://src/shooting/bullet/bullet.tscn" id="3_g10ko"]
 [ext_resource type="Texture2D" uid="uid://bngpgvqag3vx5" path="res://assets/random/desert_eagle.png" id="4_7ut30"]
+[ext_resource type="AudioStream" uid="uid://cq8c1dfph6vp4" path="res://src/shooting/shooter/shooting_sound.tres" id="5_1ytuh"]
 [ext_resource type="Texture2D" uid="uid://bxxd3bwcww4xy" path="res://assets/player/player_standard.tres" id="5_31u8r"]
 [ext_resource type="Texture2D" uid="uid://bljxlee4wyrtd" path="res://assets/player/player_left.tres" id="6_mdpni"]
 [ext_resource type="Texture2D" uid="uid://bt4qup1jv2tsp" path="res://assets/player/player_right.tres" id="7_tapmj"]
@@ -59,6 +60,7 @@ shape = SubResource("CircleShape2D_sy2xw")
 script = ExtResource("2_yr1xv")
 fire_rate = 5.0
 Bullet = ExtResource("3_g10ko")
+ShootStream = ExtResource("5_1ytuh")
 
 [node name="ShooterMarker" type="Marker2D" parent="Shooter"]
 position = Vector2(97, 7)
@@ -74,6 +76,7 @@ texture = ExtResource("4_7ut30")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sovis")
+animation = &"up"
 
 [connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="shoot" from="Shooter" to="Shooter" method="_on_shoot"]

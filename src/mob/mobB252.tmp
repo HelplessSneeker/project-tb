@@ -1,0 +1,107 @@
+[gd_scene load_steps=14 format=3 uid="uid://qwkuslpdpf7r"]
+
+[ext_resource type="Script" path="res://src/mob/mob.gd" id="1_uxywq"]
+[ext_resource type="Texture2D" uid="uid://b7ekkcdmlor8y" path="res://assets/Tileset/Tileset.png" id="2_n2clt"]
+[ext_resource type="Script" path="res://src/mob/damage_hitbox.gd" id="3_pi4co"]
+[ext_resource type="AudioStream" uid="uid://un102xcifjyi" path="res://src/mob/sounds/follow_sounds.tres" id="4_1opsn"]
+[ext_resource type="AudioStream" uid="uid://5wd6vi3ygag" path="res://sounds/zombie gtting hit/zombie dying.wav" id="5_x3ndl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7cemh"]
+size = Vector2(26.0331, 126)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s2htm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywueq"]
+size = Vector2(12.443, 95.958)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5r44s"]
+atlas = ExtResource("2_n2clt")
+region = Rect2(287, 156, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7e1b"]
+atlas = ExtResource("2_n2clt")
+region = Rect2(429, 147, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osig6"]
+atlas = ExtResource("2_n2clt")
+region = Rect2(557, 147, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tt2oa"]
+atlas = ExtResource("2_n2clt")
+region = Rect2(699, 147, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5xfan"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5r44s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7e1b")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osig6")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tt2oa")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[node name="Mob" type="CharacterBody2D"]
+position = Vector2(652, 354)
+script = ExtResource("1_uxywq")
+max_hp = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3.05087, 1)
+shape = SubResource("RectangleShape2D_7cemh")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+scale = Vector2(62.2149, 62.2149)
+shape = SubResource("CircleShape2D_s2htm")
+
+[node name="DamageHitbox" type="Area2D" parent="."]
+scale = Vector2(1.28, 1.28)
+script = ExtResource("3_pi4co")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHitbox"]
+position = Vector2(0, -2.34375)
+rotation = -3.14159
+scale = Vector2(5.52521, 1.09097)
+shape = SubResource("RectangleShape2D_ywueq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5xfan")
+
+[node name="FollowSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_1opsn")
+volume_db = -20.0
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_x3ndl")
+
+[connection signal="hit" from="." to="." method="_on_hit"]
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_detect_radius_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_detect_radius_body_exited"]
+[connection signal="body_entered" from="DamageHitbox" to="DamageHitbox" method="_on_body_entered"]
+[connection signal="body_exited" from="DamageHitbox" to="DamageHitbox" method="_on_body_exited"]

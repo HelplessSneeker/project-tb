@@ -1,0 +1,16 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=6 format=3 uid="uid://un102xcifjyi"]
+
+[ext_resource type="AudioStream" uid="uid://bjetl3c3hikeq" path="res://sounds/raw/zombie Follow/Sound FX Beni Game - Track 8.wav" id="1_n3byb"]
+[ext_resource type="AudioStream" uid="uid://ghq3ki2l3pfg" path="res://sounds/raw/zombie Follow/Sound FX Beni Game - Track 4.wav" id="2_bjtbp"]
+[ext_resource type="AudioStream" uid="uid://b58dfrjsqmnh4" path="res://sounds/raw/zombie Follow/Sound FX Beni Game - Track 5.wav" id="3_xogqc"]
+[ext_resource type="AudioStream" uid="uid://bogit40ybvkf1" path="res://sounds/raw/zombie Follow/Sound FX Beni Game - Track 6.wav" id="4_smvks"]
+[ext_resource type="AudioStream" uid="uid://8ok3wkf3i8i8" path="res://sounds/raw/zombie Follow/Sound FX Beni Game - Track 7.wav" id="5_hha3e"]
+
+[resource]
+streams_count = 6
+stream_0/stream = ExtResource("1_n3byb")
+stream_1/stream = ExtResource("2_bjtbp")
+stream_2/stream = ExtResource("3_xogqc")
+stream_3/stream = ExtResource("4_smvks")
+stream_4/stream = ExtResource("5_hha3e")
+stream_5/stream = ExtResource("1_n3byb")

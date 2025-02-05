@@ -6,6 +6,7 @@ signal shoot
 
 @onready var update_delta : float = 1 / fire_rate
 @export var Bullet : PackedScene
+@export var ShootStream : AudioStream;
 
 
 var shoot_time: float = 0;
@@ -26,3 +27,11 @@ func _on_shoot() -> void:
 		var b = Bullet.instantiate()
 		get_tree().root.add_child(b)
 		b.transform = $ShooterMarker.global_transform
+		play_sound()
+		
+func play_sound():
+		var audio_player = AudioStreamPlayer.new()
+		audio_player.stream = ShootStream
+		self.add_child(audio_player)
+		audio_player.play()
+		audio_player.connect("finished", Callable(audio_player, "queue_free"))

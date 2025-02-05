@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ytdry6qb0skb"
+path="res://.godot/imported/Sound FX Beni Game - Track 1.wav-65717fc7c23ab05c7511f89b3724d2f3.sample"
+
+[deps]
+
+source_file="res://sounds/raw/Player getting hit/Sound FX Beni Game - Track 1.wav"
+dest_files=["res://.godot/imported/Sound FX Beni Game - Track 1.wav-65717fc7c23ab05c7511f89b3724d2f3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
