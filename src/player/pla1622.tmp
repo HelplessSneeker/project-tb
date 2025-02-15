@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bvaoinmi0hocm"]
+[gd_scene load_steps=14 format=3 uid="uid://bvaoinmi0hocm"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_6r57x"]
 [ext_resource type="Script" path="res://src/shooting/shooter/shooter.gd" id="2_yr1xv"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bljxlee4wyrtd" path="res://assets/player/player_left.tres" id="6_mdpni"]
 [ext_resource type="Texture2D" uid="uid://bt4qup1jv2tsp" path="res://assets/player/player_right.tres" id="7_tapmj"]
 [ext_resource type="Texture2D" uid="uid://sabvnhgfvq70" path="res://assets/player/player_up.tres" id="8_nii26"]
+[ext_resource type="Script" path="res://src/player/spawner/mob_spawner.gd" id="10_uxirw"]
+[ext_resource type="PackedScene" uid="uid://qwkuslpdpf7r" path="res://src/mob/mob.tscn" id="11_euavx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sy2xw"]
 radius = 11.1773
@@ -76,6 +78,15 @@ texture = ExtResource("4_7ut30")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sovis")
+animation = &"up"
+
+[node name="MobSpawner" type="Node2D" parent="."]
+script = ExtResource("10_uxirw")
+mob = ExtResource("11_euavx")
+
+[node name="Timer" type="Timer" parent="MobSpawner"]
+autostart = true
 
 [connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="shoot" from="Shooter" to="Shooter" method="_on_shoot"]
+[connection signal="timeout" from="MobSpawner/Timer" to="MobSpawner" method="spawn_mob"]

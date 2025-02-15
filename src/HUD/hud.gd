@@ -13,9 +13,9 @@ func _process(delta: float) -> void:
 
 
 func _on_player_hp_changed(hp: int) -> void:
-	$Control/HealtBar.value = hp
+	$HealthBar.value = hp
 	
 
 
 func _on_player_set_max_hp(hp: int) -> void:
-	$Control/HealtBar.max_value = hp
+	$HealthBar.max_value = hp

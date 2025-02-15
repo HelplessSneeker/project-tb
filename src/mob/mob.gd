@@ -2,11 +2,13 @@ extends EntitiyBase
 
 @export var speed = 100;
 @export var max_hp: int = 5
+@export var search_radius: bool = false;
 
-var player = null
+var player = null;
 
 func _ready() -> void:
 	hp=max_hp
+	$FollowSound.play();
 
 func die():
 	dead = true;
@@ -25,11 +27,11 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func follow_player():
-	if player && knockback == Vector2.ZERO && !dead:
+	if player && knockback == Vector2.ZERO && !dead && position:
 		if (!$FollowSound.is_playing()):
 			$FollowSound.play();
 		var direction = position.direction_to(player.position);
-		velocity = direction * speed + knockback
+		velocity = direction * speed
 		if(direction.y < 0):
 			$AnimatedSprite2D.play("up")
 		elif(direction.x < 0):
@@ -38,9 +40,9 @@ func follow_player():
 			$AnimatedSprite2D.play("right")
 	
 func _on_detect_radius_body_entered(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") && search_radius:
 		player = body
 
 func _on_detect_radius_body_exited(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") && search_radius:
 		player = null

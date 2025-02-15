@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 signal hit(damage: int)
 signal hp_changed(hp: int)
+signal died();
 
 var knockback = Vector2.ZERO;
 var knockback_duration = 0.2;
@@ -31,4 +32,4 @@ func _handle_knockback(delta: float) -> void:
 
 
 func die():
-	pass
+	emit_signal('died')

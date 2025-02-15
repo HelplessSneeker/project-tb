@@ -47,8 +47,6 @@ func handle_invulnerable(delta):
 		invulnerability_time = 0;
 		invulnerable = false
 		
-func die():
-	get_tree().change_scene_to_file("res://src/ui/start_menu.tscn")
 	
 func _on_hit(damage: int, k: Vector2) -> void:
 		self._on_entity_hit(damage, k);

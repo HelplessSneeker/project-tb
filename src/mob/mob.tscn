@@ -24,9 +24,9 @@ size = Vector2(26.0331, 126)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywueq"]
 size = Vector2(12.443, 95.958)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5r44s"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ikyx"]
 atlas = ExtResource("2_n2clt")
-region = Rect2(287, 156, 128, 128)
+region = Rect2(292, 159, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q7e1b"]
 atlas = ExtResource("2_n2clt")
@@ -44,7 +44,7 @@ region = Rect2(699, 147, 128, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5r44s")
+"texture": SubResource("AtlasTexture_1ikyx")
 }],
 "loop": true,
 "name": &"default",
@@ -88,7 +88,7 @@ stream_7/stream = ExtResource("13_a2yap")
 stream_8/stream = ExtResource("14_4ckca")
 stream_9/stream = ExtResource("15_u7nck")
 
-[node name="Mob" type="CharacterBody2D"]
+[node name="Mob" type="CharacterBody2D" groups=["mobs"]]
 position = Vector2(652, 354)
 script = ExtResource("1_uxywq")
 

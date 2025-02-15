@@ -1,7 +1,24 @@
 [gd_scene load_steps=4 format=3 uid="uid://rkxryfyxct41"]
 
-[ext_resource type="Script" path="res://src/ui/start_menu.gd" id="1_ev8y2"]
 [ext_resource type="AudioStream" uid="uid://bpo78lkc5cepe" path="res://sounds/raw/opening/Sound FX Beni Game.wav" id="2_ht71o"]
+
+[sub_resource type="GDScript" id="GDScript_trm3v"]
+script/source = "extends MarginContainer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_play_button_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://src/game/game.tscn\")
+"
 
 [sub_resource type="LabelSettings" id="LabelSettings_5vem1"]
 font_size = 100
@@ -16,7 +33,7 @@ offset_right = 557.0
 offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ev8y2")
+script = SubResource("GDScript_trm3v")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 2
