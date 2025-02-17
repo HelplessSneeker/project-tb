@@ -25,7 +25,7 @@ func _on_shoot() -> void:
 		shoot_time = 0
 		cooldown = true
 		var b = Bullet.instantiate()
-		get_tree().root.add_child(b)
+		get_tree().root.get_node('Game').add_child(b)
 		b.transform = $ShooterMarker.global_transform
 		play_sound()
 		

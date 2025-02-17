@@ -1,7 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgk4mhcjgvehs"]
+[gd_scene load_steps=5 format=3 uid="uid://bgk4mhcjgvehs"]
 
-[ext_resource type="PackedScene" uid="uid://c2soamuilmd4i" path="res://src/game/level.tscn" id="1_hm5kq"]
+[ext_resource type="PackedScene" uid="uid://bvaoinmi0hocm" path="res://src/player/player.tscn" id="1_c2ucl"]
+[ext_resource type="Script" path="res://src/game/game.gd" id="1_fcd33"]
+[ext_resource type="PackedScene" uid="uid://bphf081gt14b4" path="res://src/HUD/hud.tscn" id="2_i47wm"]
+[ext_resource type="PackedScene" uid="uid://cvhhghgmqi0je" path="res://src/game/spawner/mob_spawner.tscn" id="3_0pqnl"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_fcd33")
 
-[node name="Level" parent="." instance=ExtResource("1_hm5kq")]
+[node name="Player" parent="." instance=ExtResource("1_c2ucl")]
+
+[node name="HUD" parent="." instance=ExtResource("2_i47wm")]
+
+[node name="MobSpawner" parent="." instance=ExtResource("3_0pqnl")]
+
+[connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="hp_changed" from="Player" to="HUD" method="_on_player_hp_changed"]
+[connection signal="set_max_hp" from="Player" to="HUD" method="_on_player_set_max_hp"]

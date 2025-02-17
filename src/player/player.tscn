@@ -17,6 +17,14 @@ radius = 11.1773
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("5_31u8r")
 }],
 "loop": true,
@@ -76,6 +84,7 @@ texture = ExtResource("4_7ut30")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sovis")
+animation = &"death"
 
 [connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="shoot" from="Shooter" to="Shooter" method="_on_shoot"]

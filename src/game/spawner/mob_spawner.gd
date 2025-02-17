@@ -2,8 +2,8 @@ extends Node2D
 
 const mob_scene = preload('res://src/mob/mob.tscn')
 
-@export var min_spawn_distance: float = 200;
-@export var max_spawn_distance: float = 500;
+@export var min_spawn_distance: float = 400;
+@export var max_spawn_distance: float = 1000;
 
 @onready var player = get_node('../Player');
 
