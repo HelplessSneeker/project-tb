@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bgk4mhcjgvehs"]
 
-[ext_resource type="PackedScene" uid="uid://bvaoinmi0hocm" path="res://src/player/player.tscn" id="1_c2ucl"]
+[ext_resource type="PackedScene" uid="uid://bvaoinmi0hocm" path="res://src/game/player/player.tscn" id="1_c2ucl"]
 [ext_resource type="Script" path="res://src/game/game.gd" id="1_fcd33"]
-[ext_resource type="PackedScene" uid="uid://bphf081gt14b4" path="res://src/HUD/hud.tscn" id="2_i47wm"]
+[ext_resource type="PackedScene" uid="uid://bphf081gt14b4" path="res://src/game/HUD/hud.tscn" id="2_i47wm"]
 [ext_resource type="PackedScene" uid="uid://cvhhghgmqi0je" path="res://src/game/spawner/mob_spawner.tscn" id="3_0pqnl"]
 
 [node name="Game" type="Node2D"]

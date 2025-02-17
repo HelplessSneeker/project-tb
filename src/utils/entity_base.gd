@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 signal hit(damage: int)
 signal hp_changed(hp: int)
+signal set_max_hp(hp: int)
 signal died();
 
 var knockback = Vector2.ZERO;

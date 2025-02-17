@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bphf081gt14b4"]
 
-[ext_resource type="Script" path="res://src/HUD/hud.gd" id="1_b2x6s"]
+[ext_resource type="Script" path="res://src/game/HUD/hud.gd" id="1_b2x6s"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kntt6"]
 

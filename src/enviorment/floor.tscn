@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dy2ria6edn2oq"]
-
-[ext_resource type="Texture2D" uid="uid://c8qpsykmmrv33" path="res://assets/Tileset/Floor.png" id="1_fdtsm"]
-
-[node name="Sprite2D" type="Sprite2D"]
-z_index = -1
-scale = Vector2(2, 2)
-texture = ExtResource("1_fdtsm")

@@ -1,9 +1,9 @@
 [gd_scene load_steps=25 format=3 uid="uid://qwkuslpdpf7r"]
 
-[ext_resource type="Script" path="res://src/mob/mob.gd" id="1_uxywq"]
+[ext_resource type="Script" path="res://src/game/mob/mob.gd" id="1_uxywq"]
 [ext_resource type="Texture2D" uid="uid://b7ekkcdmlor8y" path="res://assets/Tileset/Tileset.png" id="2_n2clt"]
-[ext_resource type="Script" path="res://src/mob/damage_hitbox.gd" id="3_pi4co"]
-[ext_resource type="AudioStream" uid="uid://un102xcifjyi" path="res://src/mob/follow_sounds.tres" id="4_1opsn"]
+[ext_resource type="Script" path="res://src/game/mob/damage_hitbox.gd" id="3_pi4co"]
+[ext_resource type="AudioStream" uid="uid://un102xcifjyi" path="res://src/game/mob/follow_sounds.tres" id="4_1opsn"]
 [ext_resource type="AudioStream" uid="uid://5wd6vi3ygag" path="res://sounds/raw/zombie gtting hit/zombie dying.wav" id="5_x3ndl"]
 [ext_resource type="AudioStream" uid="uid://chouulumowweo" path="res://sounds/raw/zombie gtting hit/Sound FX Beni Game - Track 1.wav" id="6_e1vrd"]
 [ext_resource type="AudioStream" uid="uid://dxe1q0gjhypi6" path="res://sounds/raw/zombie gtting hit/Sound FX Beni Game - Track 2.wav" id="7_qk51x"]

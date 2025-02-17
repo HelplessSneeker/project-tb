@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://crcwvytue7gwe"]
 
-[ext_resource type="Script" path="res://src/shooting/bullet/bullet.gd" id="1_t8yvn"]
+[ext_resource type="Script" path="res://src/game/player/shooting/bullet/bullet.gd" id="1_t8yvn"]
 [ext_resource type="Texture2D" uid="uid://bawb1giq2sgjx" path="res://assets/Bullet Animation Frames/Bullet 1.png" id="2_rhv5n"]
 [ext_resource type="Texture2D" uid="uid://b8uouocp204ei" path="res://assets/Bullet Animation Frames/Bullet 2.png" id="3_83eqo"]
 [ext_resource type="Texture2D" uid="uid://b3043t0mx533y" path="res://assets/Bullet Animation Frames/Bullet 3.png" id="4_v8ks6"]

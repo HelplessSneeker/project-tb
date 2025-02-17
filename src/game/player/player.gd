@@ -4,7 +4,8 @@ extends EntitiyBase
 @export var speed = 400
 @export var invulnerability_duration = 0.5
 
-signal set_max_hp(hp: int)
+@onready var lvl = 1;
+
 
 var invulnerability_time = 0
 
