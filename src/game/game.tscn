@@ -17,3 +17,4 @@ script = ExtResource("1_fcd33")
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="hp_changed" from="Player" to="HUD" method="_on_player_hp_changed"]
 [connection signal="set_max_hp" from="Player" to="HUD" method="_on_player_set_max_hp"]
+[connection signal="mob_died" from="MobSpawner" to="Player" method="_xp_gained"]

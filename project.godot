@@ -16,6 +16,11 @@ config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://assets/random/icon.svg"
 config/windows_native_icon="res://assets/icon.ico"
 
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
+
 [global_group]
 
 mobs="Mobs"

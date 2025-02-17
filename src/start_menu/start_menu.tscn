@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://rkxryfyxct41"]
 
-[ext_resource type="AudioStream" uid="uid://bpo78lkc5cepe" path="res://sounds/raw/opening/Sound FX Beni Game.wav" id="2_ht71o"]
+[ext_resource type="AudioStream" uid="uid://bpo78lkc5cepe" path="res://sounds/raw/opening/Sound FX Beni Game.wav" id="1_eecdp"]
 
 [sub_resource type="GDScript" id="GDScript_trm3v"]
 script/source = "extends MarginContainer
@@ -53,7 +53,7 @@ layout_mode = 2
 text = "Play"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_ht71o")
+stream = ExtResource("1_eecdp")
 volume_db = -20.0
 autoplay = true
 

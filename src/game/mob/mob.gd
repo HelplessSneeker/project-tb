@@ -3,6 +3,7 @@ extends EntitiyBase
 @export var speed = 100;
 @export var max_hp: int = 5
 @export var search_radius: bool = false;
+@export var xp_gain = 5;
 
 var player = null;
 
@@ -11,6 +12,7 @@ func _ready() -> void:
 	$FollowSound.play();
 
 func die():
+	emit_signal('died', xp_gain)
 	dead = true;
 	$DamageHitbox.queue_free();
 	$DeathSound.connect("finished", Callable(self, "queue_free"))

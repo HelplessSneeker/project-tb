@@ -1,11 +1,17 @@
 extends Node2D
 
-const mob_scene = preload('res://src/mob/mob.tscn')
+signal mob_died(xp_gain);
+
+const mob_scene = preload('res://src/game/mob/mob.tscn')
 
 @export var min_spawn_distance: float = 400;
 @export var max_spawn_distance: float = 1000;
+@export var spawn_time: float = 2;
 
 @onready var player = get_node('../Player');
+
+func _ready() -> void:
+	$Timer.wait_time = spawn_time;
 
 func spawn_mob():
 	
@@ -28,7 +34,10 @@ func spawn_mob():
 	# Set the mob's position and player
 	mob.position = spawn_position
 	mob.player = player
+	mob.connect("died", Callable(self, '_on_mob_died'))
 
+func _on_mob_died(xp_gain):
+	emit_signal('mob_died', xp_gain);
 
 func _on_timer_timeout() -> void:
 	if(player):
